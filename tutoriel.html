@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowPI - Tutorial</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
       body {
         margin: 0;
@@ -13,54 +12,363 @@
       
       .bg-gradient-to-br {
         background: linear-gradient(to bottom right, #C51D4A, black, #4CAF50);
+        min-height: 100vh;
       }
       
-      .backdrop-blur-xl {
-        backdrop-filter: blur(24px);
-      }
-      
-      .bg-black\/80 {
+      /* Sidebar - Mobile First */
+      .sidebar {
+        width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(197, 29, 74, 0.3);
+        z-index: 100;
+        position: relative;
       }
       
-      .border-\[\#C51D4A\]\/30 {
-        border-color: rgba(197, 29, 74, 0.3);
+      .sidebar-header {
+        padding: 20px;
+        text-align: center;
       }
       
-      .border-\[\#C51D4A\]\/20 {
-        border-color: rgba(197, 29, 74, 0.2);
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
       }
       
-      .border-\[\#4CAF50\]\/20 {
-        border-color: rgba(76, 175, 80, 0.2);
+      .logo-icon {
+        width: 28px;
+        height: 28px;
       }
       
-      .text-\[\#C51D4A\] {
-        color: #C51D4A;
-      }
-      
-      .text-\[\#4CAF50\] {
+      .logo-subtitle {
         color: #4CAF50;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      
+      /* Navigation - Mobile */
+      .nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 0 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 0;
+      }
+      
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        flex-shrink: 0;
+      }
+      
+      .nav-link:hover {
+        background-color: rgba(197, 29, 74, 0.1);
       }
       
       .nav-link.active {
         background-color: rgba(197, 29, 74, 0.2);
-        border-left: 4px solid #C51D4A;
+        border-bottom: 4px solid #C51D4A;
+        border-left: none;
+      }
+      
+      .nav-icon {
+        width: 20px;
+        height: 20px;
+      }
+      
+      /* Main Content */
+      .main-content {
+        padding: 20px;
+        position: relative;
+      }
+      
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      
+      /* Tutorial Content */
+      .tutorial-section {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 20px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+        margin-bottom: 20px;
+      }
+      
+      .tutorial-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .section-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 16px;
+      }
+      
+      .subsection-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #C51D4A;
+        margin-bottom: 12px;
+      }
+      
+      .tutorial-text {
+        color: #e0e0e0;
+        line-height: 1.6;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      
+      .tutorial-list {
+        padding-left: 20px;
+        color: #e0e0e0;
+        margin-bottom: 16px;
+      }
+      
+      .tutorial-list li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+      
+      .tutorial-image {
+        width: 100%;
+        border-radius: 8px;
+        margin: 16px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 20px;
+      }
+      
+      .video-card {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        padding: 16px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+      }
+      
+      .video-placeholder {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .video-icon {
+        width: 40px;
+        height: 40px;
+        color: #C51D4A;
+      }
+      
+      .video-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 4px;
+      }
+      
+      .video-description {
+        font-size: 13px;
+        color: #e0e0e0;
+      }
+      
+      /* Animated Background */
+      .animated-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+      
+      .animated-bg-shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.1;
+        filter: blur(40px);
+      }
+      
+      .shape1 {
+        background: #C51D4A;
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: 10%;
+        animation: float 15s ease-in-out infinite;
+      }
+      
+      .shape2 {
+        background: #4CAF50;
+        width: 250px;
+        height: 250px;
+        top: 60%;
+        right: 10%;
+        animation: float 20s ease-in-out infinite reverse;
+      }
+      
+      .shape3 {
+        background: #6f42c1;
+        width: 150px;
+        height: 150px;
+        bottom: 10%;
+        left: 30%;
+        animation: float 18s ease-in-out infinite 2s;
+      }
+      
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(50px, 30px) rotate(180deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(360deg);
+        }
+      }
+      
+      /* Larger screens */
+      @media (min-width: 768px) {
+        .sidebar {
+          position: fixed;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 280px;
+          border-right: 1px solid rgba(197, 29, 74, 0.3);
+          border-bottom: none;
+        }
+        
+        .sidebar-header {
+          padding: 32px;
+          text-align: left;
+        }
+        
+        .logo {
+          font-size: 28px;
+          gap: 12px;
+          justify-content: flex-start;
+        }
+        
+        .logo-icon {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .logo-subtitle {
+          font-size: inherit;
+        }
+        
+        .nav {
+          display: block;
+          overflow-x: visible;
+          padding: 0;
+          white-space: normal;
+          margin-top: 32px;
+        }
+        
+        .nav-link {
+          padding: 12px 32px;
+          gap: 12px;
+        }
+        
+        .nav-link.active {
+          border-left: 4px solid #C51D4A;
+          border-bottom: none;
+        }
+        
+        .nav-icon {
+          width: 24px;
+          height: 24px;
+        }
+        
+        .main-content {
+          margin-left: 280px;
+          padding: 40px;
+        }
+        
+        .tutorial-title {
+          font-size: 36px;
+          text-align: left;
+        }
+        
+        .section-title {
+          font-size: 28px;
+        }
+        
+        .subsection-title {
+          font-size: 20px;
+        }
+        
+        .tutorial-text {
+          font-size: 16px;
+        }
+        
+        .tutorial-section {
+          padding: 32px;
+          border-radius: 16px;
+          margin-bottom: 32px;
+        }
+        
+        .video-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+        
+        .video-card {
+          padding: 20px;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .video-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="min-h-screen bg-gradient-to-br">
+    <div class="bg-gradient-to-br">
       <!-- Sidebar -->
-      <div class="fixed left-0 top-0 h-full w-72 bg-black/80 backdrop-blur-xl border-r border-[#C51D4A]/30">
-        <div class="p-8">
-            <h1 class="text-3xl font-bold text-white flex items-center gap-3">
-            <img src="./logo.png" alt="FlowPI Logo" class="w-8 h-8">
+      <div class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">
+            <img src="logo.png" alt="FlowPI Logo" class="logo-icon" />
             FlowPI
             </h1>
-          <p class="text-[#4CAF50] mt-2">FlowPi : the entreprise eye, where all your data flows by</p>
+          <p class="logo-subtitle">FlowPi : the entreprise eye, where all your data flows by</p>
         </div>
-        <nav class="mt-8">
+        <nav class="nav">
             <a href="index.html" class="nav-link flex items-center gap-3 px-8 py-3 text-white hover:bg-[#C51D4A]/10 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -95,23 +403,30 @@
       </div>
 
       <!-- Main Content -->
-      <div class="ml-72 p-12">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-4xl font-bold text-white mb-8">FlowPI Tutorial</h1>
-          
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-white">Getting Started</h2>
-            <p class="text-gray-300 mb-6">
-              Welcome to FlowPI! This tutorial will guide you through the setup and basic usage of our energy monitoring system. Follow these steps to get started with monitoring and optimizing your energy consumption.
-            </p>
-            
+      <div class="main-content">
+        <div class="container">
+          <!-- Animated Background -->
+          <div class="animated-bg">
+            <div class="animated-bg-shape shape1"></div>
+            <div class="animated-bg-shape shape2"></div>
+            <div class="animated-bg-shape shape3"></div>
           </div>
           
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-white">1. Hardware Installation</h2>
+          <h1 class="tutorial-title">FlowPI Tutorial</h1>
+          
+          <div class="tutorial-section">
+            <h2 class="section-title">Getting Started</h2>
+            <p class="tutorial-text">
+              Welcome to FlowPI! This tutorial will guide you through the setup and basic usage of our energy monitoring system. Follow these steps to get started with monitoring and optimizing your energy consumption.
+            </p>
+          </div>
+          
+          <div class="tutorial-section">
+            <h2 class="section-title">1. Hardware Installation</h2>
+            
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">What You'll Need</h3>
-              <ul class="list-disc pl-6 text-gray-300 space-y-2">
+              <h3 class="subsection-title">What You'll Need</h3>
+              <ul class="tutorial-list">
                 <li>FlowPI Energy Monitor device</li>
                 <li>Power adapter (included)</li>
                 <li>Ethernet cable (included)</li>
@@ -121,8 +436,8 @@
             </div>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Installation Steps</h3>
-              <ol class="list-decimal pl-6 text-gray-300 space-y-4">
+              <h3 class="subsection-title">Installation Steps</h3>
+              <ol class="tutorial-list">
                 <li>
                   <p class="font-semibold">Turn off power at the main breaker</p>
                   <p>Safety first! Always ensure power is completely off before working with electrical panels.</p>
@@ -154,17 +469,15 @@
               </ol>
             </div>
             
-            <div class="flex justify-center mb-4">
-              <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Hardware Installation" class="rounded-lg max-w-full h-auto shadow-lg">
-            </div>
+            <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Hardware Installation" class="tutorial-image">
           </div>
           
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-white">2. Software Setup</h2>
+          <div class="tutorial-section">
+            <h2 class="section-title">2. Software Setup</h2>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Creating Your Account</h3>
-              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+              <h3 class="subsection-title">Creating Your Account</h3>
+              <ol class="tutorial-list">
                 <li>Visit <span class="text-[#4CAF50] font-semibold">app.flowpi.com</span> in your web browser</li>
                 <li>Click on "Sign Up" and enter your email address and password</li>
                 <li>Verify your email address by clicking the link sent to your inbox</li>
@@ -173,8 +486,8 @@
             </div>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Connecting Your Device</h3>
-              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+              <h3 class="subsection-title">Connecting Your Device</h3>
+              <ol class="tutorial-list">
                 <li>In the FlowPI dashboard, click on "Add Device"</li>
                 <li>Enter the device ID (found on the bottom of your FlowPI device)</li>
                 <li>Follow the on-screen instructions to complete the connection</li>
@@ -183,8 +496,8 @@
             </div>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Configuring Your Circuits</h3>
-              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+              <h3 class="subsection-title">Configuring Your Circuits</h3>
+              <ol class="tutorial-list">
                 <li>Go to "Settings" > "Circuit Configuration"</li>
                 <li>For each connected CT, assign a name (e.g., "Main Power", "Kitchen", "HVAC")</li>
                 <li>Set the amperage rating for each circuit</li>
@@ -192,165 +505,147 @@
               </ol>
             </div>
             
-            <div class="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Software Setup" class="rounded-lg max-w-full h-auto shadow-lg">
-            </div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Software Setup" class="tutorial-image">
           </div>
           
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-white">3. Using the Dashboard</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Real-Time Monitoring</h3>
-                <p class="text-gray-300">
-                  The main dashboard displays your current power usage in real-time. You can see:
-                </p>
-                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
-                  <li>Total power consumption</li>
-                  <li>Individual circuit usage</li>
-                  <li>Power quality metrics</li>
-                  <li>Cost estimates based on your utility rates</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Historical Data</h3>
-                <p class="text-gray-300">
-                  Access historical energy usage data to identify trends and opportunities for savings:
-                </p>
-                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
-                  <li>Daily, weekly, monthly, and yearly views</li>
-                  <li>Compare periods to identify changes</li>
-                  <li>Export data for further analysis</li>
-                  <li>View cost breakdowns by time and circuit</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Alerts & Notifications</h3>
-                <p class="text-gray-300">
-                  Set up custom alerts to be notified of unusual energy usage:
-                </p>
-                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
-                  <li>Power usage thresholds</li>
-                  <li>Unexpected device behavior</li>
-                  <li>Potential electrical issues</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Energy Insights</h3>
-                <p class="text-gray-300">
-                  FlowPI analyzes your usage patterns to provide actionable insights:
-                </p>
-                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
-                  <li>Identify energy-hungry appliances</li>
-                  <li>Receive personalized saving recommendations</li>
-                  <li>Detect vampire power draw</li>
-                  <li>Compare your usage to similar households</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Dashboard Usage" class="rounded-lg max-w-full h-auto shadow-lg">
-            </div>
-          </div>
-          
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-white">4. Advanced Features</h2>
+          <div class="tutorial-section">
+            <h2 class="section-title">3. Using the Dashboard</h2>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Integration with Smart Home Systems</h3>
-              <p class="text-gray-300 mb-2">
+              <h3 class="subsection-title">Real-Time Monitoring</h3>
+              <p class="tutorial-text">
+                The main dashboard displays your current power usage in real-time. You can see:
+              </p>
+              <ul class="tutorial-list">
+                <li>Total power consumption</li>
+                <li>Individual circuit usage</li>
+                <li>Power quality metrics</li>
+                <li>Cost estimates based on your utility rates</li>
+              </ul>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="subsection-title">Historical Data</h3>
+              <p class="tutorial-text">
+                Access historical energy usage data to identify trends and opportunities for savings:
+              </p>
+              <ul class="tutorial-list">
+                <li>Daily, weekly, monthly, and yearly views</li>
+                <li>Compare periods to identify changes</li>
+                <li>Export data for further analysis</li>
+                <li>View cost breakdowns by time and circuit</li>
+              </ul>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="subsection-title">Alerts & Notifications</h3>
+              <p class="tutorial-text">
+                Set up custom alerts to be notified of unusual energy usage:
+              </p>
+              <ul class="tutorial-list">
+                <li>Power usage thresholds</li>
+                <li>Unexpected device behavior</li>
+                <li>Potential electrical issues</li>
+              </ul>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="subsection-title">Energy Insights</h3>
+              <p class="tutorial-text">
+                FlowPI analyzes your usage patterns to provide actionable insights:
+              </p>
+              <ul class="tutorial-list">
+                <li>Identify energy-hungry appliances</li>
+                <li>Receive personalized saving recommendations</li>
+                <li>Detect vampire power draw</li>
+                <li>Compare your usage to similar households</li>
+              </ul>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Dashboard Usage" class="tutorial-image">
+          </div>
+          
+          <div class="tutorial-section">
+            <h2 class="section-title">4. Advanced Features</h2>
+            
+            <div class="mb-6">
+              <h3 class="subsection-title">Integration with Smart Home Systems</h3>
+              <p class="tutorial-text">
                 FlowPI works seamlessly with popular smart home platforms:
               </p>
-              <ul class="list-disc pl-6 text-gray-300 space-y-1">
+              <ul class="tutorial-list">
                 <li>Home Assistant</li>
                 <li>SmartThings</li>
                 <li>Apple HomeKit</li>
                 <li>Google Home</li>
                 <li>Amazon Alexa</li>
               </ul>
-              <p class="text-gray-300 mt-2">
+              <p class="tutorial-text">
                 Visit the "Integrations" section in settings to connect your preferred platform.
               </p>
             </div>
             
             <div class="mb-6">
-              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">API Access</h3>
-              <p class="text-gray-300">
+              <h3 class="subsection-title">API Access</h3>
+              <p class="tutorial-text">
                 For developers and advanced users, FlowPI offers a comprehensive API:
               </p>
-              <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+              <ul class="tutorial-list">
                 <li>Access real-time and historical data</li>
                 <li>Control compatible smart devices</li>
                 <li>Create custom dashboards and applications</li>
                 <li>Integrate with your own systems</li>
               </ul>
-              <p class="text-gray-300 mt-2">
+              <p class="tutorial-text">
                 API documentation is available at <span class="text-[#4CAF50] font-semibold">docs.flowpi.com/api</span>
               </p>
             </div>
             
-            <div class="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Advanced Features" class="rounded-lg max-w-full h-auto shadow-lg">
-            </div>
+            <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Advanced Features" class="tutorial-image">
           </div>
           
-          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20">
-            <h2 class="text-2xl font-bold mb-4 text-white">Video Tutorials</h2>
+          <div class="tutorial-section">
+            <h2 class="section-title">Video Tutorials</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
-                <div class="aspect-w-16 aspect-h-9 mb-3">
-                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
+            <div class="video-grid">
+              <div class="video-card">
+                <div class="video-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="video-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-white">Installation Guide</h3>
-                <p class="text-gray-300 text-sm">Complete walkthrough of hardware installation process</p>
+                <h3 class="video-title">Installation Guide</h3>
+                <p class="video-description">Complete walkthrough of hardware installation process</p>
               </div>
               
-              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
-                <div class="aspect-w-16 aspect-h-9 mb-3">
-                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
+              <div class="video-card">
+                <div class="video-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="video-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-white">Dashboard Overview</h3>
-                <p class="text-gray-300 text-sm">Learn to navigate and use all dashboard features</p>
+                <h3 class="video-title">Dashboard Overview</h3>
+                <p class="video-description">Learn to navigate and use all dashboard features</p>
               </div>
               
-              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
-                <div class="aspect-w-16 aspect-h-9 mb-3">
-                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
+              <div class="video-card">
+                <div class="video-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="video-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-white">Smart Home Integration</h3>
-                <p class="text-gray-300 text-sm">Connect FlowPI with your existing smart home systems</p>
+                <h3 class="video-title">Smart Home Integration</h3>
+                <p class="video-description">Connect FlowPI with your existing smart home systems</p>
               </div>
               
-              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
-                <div class="aspect-w-16 aspect-h-9 mb-3">
-                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
+              <div class="video-card">
+                <div class="video-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="video-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-white">Troubleshooting Guide</h3>
-                <p class="text-gray-300 text-sm">Solutions for common issues and questions</p>
+                <h3 class="video-title">Troubleshooting Guide</h3>
+                <p class="video-description">Solutions for common issues and questions</p>
               </div>
             </div>
           </div>
