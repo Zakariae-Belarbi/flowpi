@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowPI - Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      
+      .bg-gradient-to-br {
+        background: linear-gradient(to bottom right, #C51D4A, black, #4CAF50);
+      }
+      
+      .backdrop-blur-xl {
+        backdrop-filter: blur(24px);
+      }
+      
+      .bg-black\/80 {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .border-\[\#C51D4A\]\/30 {
+        border-color: rgba(197, 29, 74, 0.3);
+      }
+      
+      .border-\[\#C51D4A\]\/20 {
+        border-color: rgba(197, 29, 74, 0.2);
+      }
+      
+      .border-\[\#4CAF50\]\/20 {
+        border-color: rgba(76, 175, 80, 0.2);
+      }
+      
+      .text-\[\#C51D4A\] {
+        color: #C51D4A;
+      }
+      
+      .text-\[\#4CAF50\] {
+        color: #4CAF50;
+      }
+      
+      .nav-link.active {
+        background-color: rgba(197, 29, 74, 0.2);
+        border-left: 4px solid #C51D4A;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gradient-to-br">
+      <!-- Sidebar -->
+      <div class="fixed left-0 top-0 h-full w-72 bg-black/80 backdrop-blur-xl border-r border-[#C51D4A]/30">
+        <div class="p-8">
+            <h1 class="text-3xl font-bold text-white flex items-center gap-3">
+            <img src="./logo.png" alt="FlowPI Logo" class="w-8 h-8">
+            FlowPI
+            </h1>
+          <p class="text-[#4CAF50] mt-2">FlowPi : the entreprise eye, where all your data flows by</p>
+        </div>
+        <nav class="mt-8">
+            <a href="home.html" class="nav-link flex items-center gap-3 px-8 py-3 text-white hover:bg-[#C51D4A]/10 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Home
+              </a>
+          <a href="dashboard.html" class="nav-link flex items-center gap-3 px-8 py-3 text-white hover:bg-[#C51D4A]/10 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+              <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+              <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+              <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+            </svg>
+            Dashboard
+          </a>
+          <a href="tutoriel.html" class="nav-link active flex items-center gap-3 px-8 py-3 text-white hover:bg-[#C51D4A]/10 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+            </svg>
+            tutorial
+          </a>
+          <a href="about.html" class="nav-link flex items-center gap-3 px-8 py-3 text-white hover:bg-[#C51D4A]/10 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            About Us
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="ml-72 p-12">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl font-bold text-white mb-8">FlowPI Tutorial</h1>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-white">Getting Started</h2>
+            <p class="text-gray-300 mb-6">
+              Welcome to FlowPI! This tutorial will guide you through the setup and basic usage of our energy monitoring system. Follow these steps to get started with monitoring and optimizing your energy consumption.
+            </p>
+            
+          </div>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-white">1. Hardware Installation</h2>
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">What You'll Need</h3>
+              <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>FlowPI Energy Monitor device</li>
+                <li>Power adapter (included)</li>
+                <li>Ethernet cable (included)</li>
+                <li>Current transformers (CTs) - quantity depends on your monitoring needs</li>
+                <li>Screwdriver and basic tools</li>
+              </ul>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Installation Steps</h3>
+              <ol class="list-decimal pl-6 text-gray-300 space-y-4">
+                <li>
+                  <p class="font-semibold">Turn off power at the main breaker</p>
+                  <p>Safety first! Always ensure power is completely off before working with electrical panels.</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Mount the FlowPI device</p>
+                  <p>Secure the device near your electrical panel using the included mounting bracket.</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Install current transformers</p>
+                  <p>Clip the CT sensors around the main power lines or individual circuits you wish to monitor. Ensure the arrow on the CT points toward the load (away from the grid).</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Connect CTs to the FlowPI device</p>
+                  <p>Plug each CT connector into the corresponding port on the FlowPI device.</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Connect to network</p>
+                  <p>Use the included Ethernet cable to connect the FlowPI device to your router.</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Power up</p>
+                  <p>Connect the power adapter to the FlowPI device and plug it into a wall outlet.</p>
+                </li>
+                <li>
+                  <p class="font-semibold">Restore main power</p>
+                  <p>Turn the main breaker back on once all connections are secure.</p>
+                </li>
+              </ol>
+            </div>
+            
+            <div class="flex justify-center mb-4">
+              <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Hardware Installation" class="rounded-lg max-w-full h-auto shadow-lg">
+            </div>
+          </div>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-white">2. Software Setup</h2>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Creating Your Account</h3>
+              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+                <li>Visit <span class="text-[#4CAF50] font-semibold">app.flowpi.com</span> in your web browser</li>
+                <li>Click on "Sign Up" and enter your email address and password</li>
+                <li>Verify your email address by clicking the link sent to your inbox</li>
+                <li>Log in to your new FlowPI account</li>
+              </ol>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Connecting Your Device</h3>
+              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+                <li>In the FlowPI dashboard, click on "Add Device"</li>
+                <li>Enter the device ID (found on the bottom of your FlowPI device)</li>
+                <li>Follow the on-screen instructions to complete the connection</li>
+                <li>Your device should now appear in your dashboard</li>
+              </ol>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Configuring Your Circuits</h3>
+              <ol class="list-decimal pl-6 text-gray-300 space-y-2">
+                <li>Go to "Settings" > "Circuit Configuration"</li>
+                <li>For each connected CT, assign a name (e.g., "Main Power", "Kitchen", "HVAC")</li>
+                <li>Set the amperage rating for each circuit</li>
+                <li>Save your configuration</li>
+              </ol>
+            </div>
+            
+            <div class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Software Setup" class="rounded-lg max-w-full h-auto shadow-lg">
+            </div>
+          </div>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-white">3. Using the Dashboard</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Real-Time Monitoring</h3>
+                <p class="text-gray-300">
+                  The main dashboard displays your current power usage in real-time. You can see:
+                </p>
+                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+                  <li>Total power consumption</li>
+                  <li>Individual circuit usage</li>
+                  <li>Power quality metrics</li>
+                  <li>Cost estimates based on your utility rates</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Historical Data</h3>
+                <p class="text-gray-300">
+                  Access historical energy usage data to identify trends and opportunities for savings:
+                </p>
+                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+                  <li>Daily, weekly, monthly, and yearly views</li>
+                  <li>Compare periods to identify changes</li>
+                  <li>Export data for further analysis</li>
+                  <li>View cost breakdowns by time and circuit</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Alerts & Notifications</h3>
+                <p class="text-gray-300">
+                  Set up custom alerts to be notified of unusual energy usage:
+                </p>
+                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+                  <li>Power usage thresholds</li>
+                  <li>Unexpected device behavior</li>
+                  <li>Potential electrical issues</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Energy Insights</h3>
+                <p class="text-gray-300">
+                  FlowPI analyzes your usage patterns to provide actionable insights:
+                </p>
+                <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+                  <li>Identify energy-hungry appliances</li>
+                  <li>Receive personalized saving recommendations</li>
+                  <li>Detect vampire power draw</li>
+                  <li>Compare your usage to similar households</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Dashboard Usage" class="rounded-lg max-w-full h-auto shadow-lg">
+            </div>
+          </div>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#C51D4A]/20 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-white">4. Advanced Features</h2>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">Integration with Smart Home Systems</h3>
+              <p class="text-gray-300 mb-2">
+                FlowPI works seamlessly with popular smart home platforms:
+              </p>
+              <ul class="list-disc pl-6 text-gray-300 space-y-1">
+                <li>Home Assistant</li>
+                <li>SmartThings</li>
+                <li>Apple HomeKit</li>
+                <li>Google Home</li>
+                <li>Amazon Alexa</li>
+              </ul>
+              <p class="text-gray-300 mt-2">
+                Visit the "Integrations" section in settings to connect your preferred platform.
+              </p>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-[#C51D4A] mb-2">API Access</h3>
+              <p class="text-gray-300">
+                For developers and advanced users, FlowPI offers a comprehensive API:
+              </p>
+              <ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+                <li>Access real-time and historical data</li>
+                <li>Control compatible smart devices</li>
+                <li>Create custom dashboards and applications</li>
+                <li>Integrate with your own systems</li>
+              </ul>
+              <p class="text-gray-300 mt-2">
+                API documentation is available at <span class="text-[#4CAF50] font-semibold">docs.flowpi.com/api</span>
+              </p>
+            </div>
+            
+            <div class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Advanced Features" class="rounded-lg max-w-full h-auto shadow-lg">
+            </div>
+          </div>
+          
+          <div class="bg-black/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-[#4CAF50]/20">
+            <h2 class="text-2xl font-bold mb-4 text-white">Video Tutorials</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
+                <div class="aspect-w-16 aspect-h-9 mb-3">
+                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-lg font-semibold text-white">Installation Guide</h3>
+                <p class="text-gray-300 text-sm">Complete walkthrough of hardware installation process</p>
+              </div>
+              
+              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
+                <div class="aspect-w-16 aspect-h-9 mb-3">
+                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-lg font-semibold text-white">Dashboard Overview</h3>
+                <p class="text-gray-300 text-sm">Learn to navigate and use all dashboard features</p>
+              </div>
+              
+              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
+                <div class="aspect-w-16 aspect-h-9 mb-3">
+                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-lg font-semibold text-white">Smart Home Integration</h3>
+                <p class="text-gray-300 text-sm">Connect FlowPI with your existing smart home systems</p>
+              </div>
+              
+              <div class="bg-black/50 p-4 rounded-xl border border-[#C51D4A]/20">
+                <div class="aspect-w-16 aspect-h-9 mb-3">
+                  <div class="w-full h-0 pb-[56.25%] relative bg-black/30 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C51D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-lg font-semibold text-white">Troubleshooting Guide</h3>
+                <p class="text-gray-300 text-sm">Solutions for common issues and questions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

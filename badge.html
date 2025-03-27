@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .flowpi-badge {
+      width: 200px;
+      height: 200px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #C51D4A 0%, #000000 50%, #4CAF50 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .flowpi-badge::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(197, 29, 74, 0.25);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .flowpi-badge::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: rgba(76, 175, 80, 0.25);
+      border-radius: 50%;
+      top: 30%;
+      left: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="flowpi-badge"></div>
+</body>
+</html>

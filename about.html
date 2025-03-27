@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowPI - About Us</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      
+      .bg-gradient-to-br {
+        background: linear-gradient(to bottom right, #C51D4A, black, #4CAF50);
+        min-height: 100vh;
+      }
+      
+      .backdrop-blur-xl {
+        backdrop-filter: blur(24px);
+      }
+      
+      /* Sidebar */
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 280px;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(24px);
+        border-right: 1px solid rgba(197, 29, 74, 0.3);
+        z-index: 100;
+      }
+      
+      .sidebar-header {
+        padding: 32px;
+      }
+      
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .logo-subtitle {
+        color: #4CAF50;
+        margin-top: 8px;
+      }
+      
+      /* Navigation */
+      .nav {
+        margin-top: 32px;
+      }
+      
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 32px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+      
+      .nav-link:hover {
+        background-color: rgba(197, 29, 74, 0.1);
+      }
+      
+      .nav-link.active {
+        background-color: rgba(197, 29, 74, 0.2);
+        border-left: 4px solid #C51D4A;
+      }
+      
+      .nav-icon {
+        width: 24px;
+        height: 24px;
+      }
+      
+      /* Main Content */
+      .main-content {
+        margin-left: 280px;
+        padding: 48px;
+        position: relative;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      /* Page Header */
+      .page-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      
+      .page-title {
+        font-size: 48px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #C51D4A, #ffffff, #4CAF50);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .page-subtitle {
+        font-size: 18px;
+        color: #e0e0e0;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+      
+      /* About Section */
+      .about-section {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 48px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+        margin-bottom: 64px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 24px;
+      }
+      
+      .about-content {
+        display: flex;
+        gap: 48px;
+        align-items: center;
+      }
+      
+      .about-text {
+        flex: 1;
+      }
+      
+      .about-paragraph {
+        color: #e0e0e0;
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+      
+      .about-image {
+        flex: 1;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      /* Mission & Vision */
+      .mission-vision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 64px;
+      }
+      
+      .mission, .vision {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 32px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+      }
+      
+      .mission-title, .vision-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .mission-icon, .vision-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      
+      .mission-icon {
+        background: linear-gradient(135deg, #C51D4A, #9A1536);
+      }
+      
+      .vision-icon {
+        background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      }
+      
+      .mission-text, .vision-text {
+        color: #e0e0e0;
+        line-height: 1.8;
+      }
+      
+      /* Team Section */
+      .team-section {
+        margin-bottom: 64px;
+      }
+      
+      .team-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        margin-bottom: 48px;
+      }
+      
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 32px;
+      }
+      
+      .team-member {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+        transition: transform 0.3s;
+      }
+      
+      .team-member:hover {
+        transform: translateY(-10px);
+      }
+      
+      .member-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+      
+      .member-info {
+        padding: 24px;
+      }
+      
+      .member-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 8px;
+      }
+      
+      .member-role {
+        font-size: 14px;
+        color: #C51D4A;
+        margin-bottom: 16px;
+      }
+      
+      .member-bio {
+        color: #e0e0e0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      
+      .member-social {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: background-color 0.3s;
+      }
+      
+      .social-icon:hover {
+        background-color: #C51D4A;
+      }
+      
+      /* Timeline */
+      .timeline-section {
+        margin-bottom: 64px;
+      }
+      
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .timeline::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background: linear-gradient(to bottom, #C51D4A, #4CAF50);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+      
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+      }
+      
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+      
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border: 4px solid #C51D4A;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      
+      .timeline-item:nth-child(odd)::after {
+        right: -12px;
+      }
+      
+      .timeline-item:nth-child(even)::after {
+        left: -12px;
+      }
+      
+      .timeline-content {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+      }
+      
+      .timeline-year {
+        font-size: 18px;
+        font-weight: bold;
+        color: #C51D4A;
+        margin-bottom: 8px;
+      }
+      
+      .timeline-event {
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 8px;
+      }
+      
+      .timeline-description {
+        color: #e0e0e0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      
+      /* Partners Section */
+      .partners-section {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 48px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+        margin-bottom: 64px;
+        text-align: center;
+      }
+      
+      .partners-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 48px;
+      }
+      
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+      
+      .partner-logo {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        transition: transform 0.3s;
+      }
+      
+      .partner-logo:hover {
+        transform: scale(1.05);
+      }
+      
+      .partner-logo img {
+        max-width: 100%;
+        max-height: 60px;
+        filter: grayscale(100%) brightness(2);
+        transition: filter 0.3s;
+      }
+      
+      .partner-logo:hover img {
+        filter: grayscale(0%) brightness(1);
+      }
+      
+      /* Contact CTA */
+      .contact-cta {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 48px;
+        border: 1px solid rgba(197, 29, 74, 0.2);
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      
+      .contact-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 16px;
+      }
+      
+      .contact-description {
+        color: #e0e0e0;
+        max-width: 600px;
+        margin: 0 auto 32px;
+        line-height: 1.6;
+      }
+      
+      .btn {
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: inline-block;
+      }
+      
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, #C51D4A, #9A1536);
+        color: white;
+        border: none;
+      }
+      
+      /* Footer */
+      .footer {
+        padding: 40px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+        text-align: center;
+      }
+      
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+      
+      .footer-link {
+        color: #e0e0e0;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .footer-link:hover {
+        color: #C51D4A;
+      }
+      
+      /* Animated Background */
+      .animated-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+      
+      .animated-bg-shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.1;
+        filter: blur(40px);
+      }
+      
+      .shape1 {
+        background: #C51D4A;
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 10%;
+        animation: float 15s ease-in-out infinite;
+      }
+      
+      .shape2 {
+        background: #4CAF50;
+        width: 400px;
+        height: 400px;
+        top: 60%;
+        right: 10%;
+        animation: float 20s ease-in-out infinite reverse;
+      }
+      
+      .shape3 {
+        background: #6f42c1;
+        width: 200px;
+        height: 200px;
+        bottom: 10%;
+        left: 30%;
+        animation: float 18s ease-in-out infinite 2s;
+      }
+      
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(100px, 50px) rotate(180deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(360deg);
+        }
+      }
+      
+      /* Responsive */
+      @media (max-width: 992px) {
+        .about-content {
+          flex-direction: column;
+        }
+        
+        .mission-vision {
+          grid-template-columns: 1fr;
+        }
+        
+        .timeline::after {
+          left: 31px;
+        }
+        
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+        
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+        
+        .timeline-item:nth-child(odd)::after,
+        .timeline-item:nth-child(even)::after {
+          left: 18px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 100%;
+          height: auto;
+          position: relative;
+        }
+        
+        .main-content {
+          margin-left: 0;
+          padding: 24px;
+        }
+        
+        .about-section,
+        .partners-section,
+        .contact-cta {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-gradient-to-br">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h1 class="logo">
+            <img src="logo.png" alt="FlowPI Logo" class="logo-icon" />
+            FlowPI
+            </h1>
+          <p class="logo-subtitle">FlowPi : the entreprise eye, where all your data flows by</p>
+        </div>
+        <nav class="nav">
+          <a href="home.html" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+          </a>
+          <a href="dashboard.html" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+              <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+              <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+              <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+            </svg>
+            Dashboard
+          </a>
+          <a href="tutoriel.html" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+            </svg>
+            tutorial
+          </a>
+          <a href="about.html" class="nav-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            About Us
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="container">
+          <!-- Animated Background -->
+          <div class="animated-bg">
+            <div class="animated-bg-shape shape1"></div>
+            <div class="animated-bg-shape shape2"></div>
+            <div class="animated-bg-shape shape3"></div>
+          </div>
+          
+          <!-- Page Header -->
+          <header class="page-header">
+            <h1 class="page-title">About FlowPI</h1>
+            <p class="page-subtitle">We're a team of passionate engineering students dedicated to ensuring a seamless data flow and analyzing stock levels to provide accurate predictions with innovative technology.</p>
+          </header>
+          
+          <!-- About Section -->
+          <section class="about-section">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p class="about-paragraph">FlowPI aims to be founded in 2025 by a group of engineering students who identified a critical gap in the industrial energy monitoring market. Traditional systems were expensive, difficult to install, and offered limited insights into energy consumption patterns.</p>
+                <p class="about-paragraph">Our team set out to create an affordable, easy-to-deploy solution that leverages modern IoT technology, machine learning, real-time analytics, and Industry 4.0 principles to provide businesses with unprecedented visibility into their data flow and stock management.</p>
+                <p class="about-paragraph">This revolution is driven by a group of passionate engineering students, dedicated to providing businesses with smarter data flow management and enhanced stock analysis through innovative, Industry 4.0-inspired solutions.</p>
+              </div>
+              <div class="about-image">
+                <img src="raspberry_tswira.png" alt="FlowPI Team Working">
+              </div>
+            </div>
+          </section>
+          
+          <!-- Mission & Vision -->
+          <section class="mission-vision">
+            <div class="mission">
+              <h2 class="mission-title">
+                <div class="mission-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 14 4-4"></path>
+                    <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+                  </svg>
+                </div>
+                Our Mission
+              </h2>
+              <p class="mission-text">To empower businesses with intelligent data flow management and stock analysis solutions that increase efficiency and optimize operations. We believe that better management starts with better data, and we're committed to making that data accessible, actionable, and affordable for organizations of all sizes, using the power of Raspberry Pi and Industry 4.0 principles.</p>
+            </div>
+            <div class="vision">
+              <h2 class="vision-title">
+                <div class="vision-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                Our Vision
+              </h2>
+              <p class="vision-text">We envision a future where every industrial facility, commercial building, and manufacturing plant has real-time visibility into their data flow and stock management, with intelligent systems automatically optimizing these processes to minimize waste and maximize efficiency. Our goal is to help improve operational efficiency across industries and empower businesses to make data-driven decisions, all through the use of Raspberry Pi and Industry 4.0 technologies.</p>
+            </div>
+          </section>
+          
+
+          
+          
+          
+          <!-- Contact CTA -->
+          <section class="contact-cta">
+            <h2 class="contact-title">Get in Touch</h2>
+            <p class="contact-description">Have questions about FlowPI or want to learn how we can help optimize your energy consumption? Our team is ready to assist you.</p>
+            <a href="support.html" class="btn btn-primary">Contact Us</a>
+          </section>
+          
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="footer-links">
+              <a href="#" class="footer-link">Privacy Policy</a>
+              <a href="#" class="footer-link">Terms of Service</a>
+              <a href="#" class="footer-link">Contact Us</a>
+              <a href="#" class="footer-link">Documentation</a>
+            </div>
+            <p>© 2025 FlowPI. All rights reserved.</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
