@@ -16,59 +16,62 @@
         width: 100%;
       }
       
-      .backdrop-blur-xl {
-        backdrop-filter: blur(24px);
-      }
-      
-      /* Sidebar */
+      /* Sidebar - Mobile First */
       .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 280px;
+        width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(24px);
-        border-right: 1px solid rgba(197, 29, 74, 0.3);
+        border-bottom: 1px solid rgba(197, 29, 74, 0.3);
+        z-index: 100;
+        position: relative;
       }
       
       .sidebar-header {
-        padding: 32px;
+        padding: 20px;
+        text-align: center;
       }
       
       .logo {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: bold;
         color: white;
         display: flex;
         align-items: center;
-        gap: 12px;
+        justify-content: center;
+        gap: 8px;
         margin: 0;
       }
       
       .logo-icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
       }
       
       .logo-subtitle {
         color: #4CAF50;
         margin-top: 8px;
+        font-size: 14px;
       }
       
-      /* Navigation */
+      /* Navigation - Mobile */
       .nav {
-        margin-top: 32px;
+        display: flex;
+        overflow-x: auto;
+        padding: 0 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 0;
       }
       
       .nav-link {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 12px 32px;
+        gap: 8px;
+        padding: 12px 16px;
         color: white;
         text-decoration: none;
         transition: background-color 0.3s;
+        flex-shrink: 0;
       }
       
       .nav-link:hover {
@@ -77,33 +80,33 @@
       
       .nav-link.active {
         background-color: rgba(197, 29, 74, 0.2);
-        border-left: 4px solid #C51D4A;
+        border-bottom: 4px solid #C51D4A;
+        border-left: none;
       }
       
       .nav-icon {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
       }
       
       /* Main Content */
       .main-content {
-        margin-left: 280px;
-        padding: 48px;
+        padding: 20px;
       }
       
       .container {
-        max-width: 1200px;
+        max-width: 100%;
         margin: 0 auto;
       }
       
       /* Dashboard Header */
       .dashboard-header {
-        margin-bottom: 32px;
+        margin-bottom: 24px;
         text-align: left;
       }
       
       .dashboard-title {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: bold;
         color: white;
         margin-bottom: 8px;
@@ -111,34 +114,30 @@
       
       .dashboard-subtitle {
         color: #e0e0e0;
+        font-size: 14px;
       }
       
       /* Dashboard Grid */
       .dashboard-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 24px;
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
       
       /* Card */
       .card {
         background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(24px);
-        border-radius: 16px;
-        padding: 24px;
+        border-radius: 12px;
+        padding: 20px;
         border: 1px solid rgba(197, 29, 74, 0.2);
-        transition: transform 0.3s;
-      }
-      
-      .card:hover {
-        transform: translateY(-5px);
       }
       
       .card-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
       
       .card-title {
@@ -149,13 +148,14 @@
       }
       
       .card-icon {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         color: white;
+        font-size: 16px;
       }
       
       .voltage-icon {
@@ -175,7 +175,7 @@
       }
       
       .card-content {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
       
       /* Stock Levels */
@@ -188,17 +188,19 @@
       .stock-item {
         display: flex;
         align-items: center;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
       }
       
       .stock-name {
         flex: 1;
         color: white;
+        font-size: 14px;
       }
       
       .stock-level {
         font-weight: bold;
-        margin-left: 12px;
+        margin-left: 8px;
+        font-size: 14px;
       }
       
       .stock-level.low {
@@ -216,18 +218,18 @@
       /* Energy Bar */
       .energy-bar-container {
         width: 100%;
-        height: 24px;
+        height: 20px;
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
+        border-radius: 10px;
         overflow: hidden;
-        margin: 24px 0;
+        margin: 16px 0;
         position: relative;
       }
       
       .energy-bar {
         height: 100%;
         background: linear-gradient(90deg, #4CAF50, #ffc107, #C51D4A);
-        border-radius: 12px;
+        border-radius: 10px;
         transition: width 0.5s ease;
       }
       
@@ -243,6 +245,110 @@
         font-weight: bold;
         color: white;
         text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        font-size: 12px;
+      }
+      
+      /* Larger screens */
+      @media (min-width: 768px) {
+        .sidebar {
+          position: fixed;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 280px;
+          border-right: 1px solid rgba(197, 29, 74, 0.3);
+          border-bottom: none;
+        }
+        
+        .sidebar-header {
+          padding: 32px;
+          text-align: left;
+        }
+        
+        .logo {
+          font-size: 28px;
+          gap: 12px;
+          justify-content: flex-start;
+        }
+        
+        .logo-icon {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .logo-subtitle {
+          font-size: inherit;
+        }
+        
+        .nav {
+          display: block;
+          overflow-x: visible;
+          padding: 0;
+          white-space: normal;
+          margin-top: 32px;
+        }
+        
+        .nav-link {
+          padding: 12px 32px;
+          gap: 12px;
+        }
+        
+        .nav-link.active {
+          border-left: 4px solid #C51D4A;
+          border-bottom: none;
+        }
+        
+        .nav-icon {
+          width: 24px;
+          height: 24px;
+        }
+        
+        .main-content {
+          margin-left: 280px;
+          padding: 32px;
+        }
+        
+        .dashboard-title {
+          font-size: 32px;
+        }
+        
+        .dashboard-subtitle {
+          font-size: inherit;
+        }
+        
+        .dashboard-grid {
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 24px;
+        }
+        
+        .card {
+          padding: 24px;
+          border-radius: 16px;
+        }
+        
+        .card-icon {
+          width: 40px;
+          height: 40px;
+          font-size: inherit;
+        }
+        
+        .stock-name {
+          font-size: inherit;
+        }
+        
+        .stock-level {
+          font-size: inherit;
+        }
+        
+        .energy-bar-container {
+          height: 24px;
+          border-radius: 12px;
+          margin: 24px 0;
+        }
+        
+        .energy-value-display {
+          font-size: inherit;
+        }
       }
     </style>
   </head>
